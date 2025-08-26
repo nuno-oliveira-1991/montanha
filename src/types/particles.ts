@@ -20,4 +20,7 @@ export interface ShapeType {
 export interface ShapeParticlesProps {
   count?: number;
   radius?: number;
+  position?: [number, number, number];
+  rotate?: boolean;
+  speed?: number;
 }
