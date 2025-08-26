@@ -18,9 +18,11 @@ export interface ShapeType {
 }
 
 export interface ShapeParticlesProps {
-  count?: number;
-  radius?: number;
-  position?: [number, number, number];
-  rotate?: boolean;
-  speed?: number;
-}
+    count?: number;
+    radius?: number;
+    position?: [number, number, number];
+    rotate?: boolean;
+    speed?: number; // group rotation speed
+    minSpeed?: number; // per-shape min speed
+    maxSpeed?: number; // per-shape max speed
+  }
