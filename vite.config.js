@@ -1,15 +1,23 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import tailwind from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [react()],
+  css: {
+    postcss: {
+      plugins: [
+        tailwind(),
+        autoprefixer(),
+      ],
+    },
+  },
   optimizeDeps: {
     esbuildOptions: {
-      // Enable esbuild's tree shaking
       treeShaking: true,
     },
-    // Force include these dependencies for optimization
     include: [
       'react',
       'react-dom',
@@ -20,7 +28,6 @@ export default defineConfig({
     ],
   },
   build: {
-    // Increase the chunk size warning limit
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
@@ -33,9 +40,15 @@ export default defineConfig({
     },
   },
   server: {
-    // Enable HMR
     hmr: {
-      overlay: false
+      overlay: {
+        runtimeErrors: (error) => {
+          if (error.message.includes('The message port closed before a response was received')) {
+            return false;
+          }
+          return true;
+        },
+      },
     },
     alias: {
       '@': path.resolve(__dirname, './src'),

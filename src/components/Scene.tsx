@@ -41,9 +41,9 @@ const Scene: React.FC = () => {
                         radius={20} 
                         position={[0, 0, 0]} 
                         rotate 
-                        speed={0.02}     
+                        speed={0.005}     
                         minSpeed={0.002}  
-                        maxSpeed={0.016}
+                        maxSpeed={0.006}
                     />
                 </Suspense>
             </Canvas>
