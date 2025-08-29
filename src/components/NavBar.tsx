@@ -1,14 +1,19 @@
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import MainPanel from "./MainPanel";
-import NavbarButton from "./NavbarButton";
+import MainPanel from "./main-panel";
+import NavbarButton from "./navbar-button";
+import AboutContent from "./panel-content/about-content";
+import ContactContent from "./panel-content/contact-content";
+import LiveContent from "./panel-content/live-content copy";
+import AlbumContent from "./panel-content/album-content";
+import VideosContent from "./panel-content/videos-content";
 
 const Navbar: React.FC = () => {
-    const [activePanel, setActivePanel] = useState<string | null>(null);
+    const [activePanel, setActivePanel] = useState<string | null>("Videos");
 
     const panelRef = useRef<HTMLDivElement | null>(null);
 
-    const buttons = ['About', 'Contact', 'Alvorada', 'Gigs', 'Videos', 'Merch', 'Social'];
+    const buttons = ['About', 'Contact', 'Alvorada', 'Videos', 'Live', 'Merch'];
 
     // Close panel when clicking outside
     useEffect(() => {
@@ -24,6 +29,10 @@ const Navbar: React.FC = () => {
     }, [activePanel]);
 
     const handleButtonClick = (button: string) => {
+        if (button === 'Merch') {
+            window.open('https://faveladiscos.bandcamp.com/merch', '_blank');
+            return;
+        }
         setActivePanel(button);
     };
 
@@ -38,13 +47,11 @@ const Navbar: React.FC = () => {
                         title={activePanel}
                         panelRef={panelRef}
                     >
-                        {activePanel === 'About' && <div className="text-white">About content</div>}
-                        {activePanel === 'Contact' && <div className="text-white">Contact content</div>}
-                        {activePanel === 'Alvorada' && <div className="text-white">Alvorada content</div>}
-                        {activePanel === 'Gigs' && <div className="text-white">Gigs content</div>}
-                        {activePanel === 'Videos' && <div className="text-white">Videos content</div>}
-                        {activePanel === 'Merch' && <div className="text-white">Merch content</div>}
-                        {activePanel === 'Social' && <div className="text-white">Social content</div>}
+                        {activePanel === 'About' && <AboutContent />}
+                        {activePanel === 'Contact' && <ContactContent />}
+                        {activePanel === 'Alvorada' && <AlbumContent />}
+                        {activePanel === 'Videos' && <VideosContent />}
+                        {activePanel === 'Live' && <LiveContent />}
                     </MainPanel>
                 )}
             </AnimatePresence>

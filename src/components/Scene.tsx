@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import ShapeParticles from './ShapeParticles';
-import Navbar from './NavBar';
+import ShapeParticles from './shape-particles';
+import Navbar from './navbar';
+import favelaLogo from '../assets/favela-logo.png';
 
 const Scene: React.FC = () => {
     return (
@@ -70,6 +71,32 @@ const Scene: React.FC = () => {
 
             {/* Navbar */}
             <Navbar />
+
+            {/* Favela Logo Link - Bottom Right */}
+            <a
+                href="https://faveladiscos.bandcamp.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                    position: 'fixed',
+                    bottom: '16px',
+                    right: '20px',
+                    zIndex: 1000,
+                    transition: 'opacity 0.3s ease'
+                }}
+                className="hover:opacity-70"
+            >
+                <img
+                    src={favelaLogo}
+                    alt="Favela Discos"
+                    style={{
+                        width: '40px',
+                        height: 'auto',
+                        filter: 'brightness(0) invert(1)', // Makes the logo white
+                        opacity: 0.8
+                    }}
+                />
+            </a>
         </div>
     );
 };
