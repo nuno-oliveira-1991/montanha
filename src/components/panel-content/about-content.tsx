@@ -8,10 +8,9 @@ const AboutContent: React.FC = () => {
         <img 
           src={bandImage} 
           alt="Montanha Band" 
+          title="Photography by Paula Yubero"
           className="w-full h-full object-cover object-top"
-          style={{ objectPosition: 'center 25%', opacity: 0.75
-
-           }}
+          style={{ objectPosition: 'center 25%', opacity: 0.75 }}
           loading="lazy"
         />
       </div>

@@ -7,6 +7,7 @@ import ContactContent from "./panel-content/contact-content";
 import LiveContent from "./panel-content/live-content copy";
 import AlbumContent from "./panel-content/album-content";
 import VideosContent from "./panel-content/videos-content";
+import FavelaLogo from "./FavelaLogo";
 
 const Navbar: React.FC = () => {
     const [activePanel, setActivePanel] = useState<string | null>("Videos");
@@ -56,7 +57,7 @@ const Navbar: React.FC = () => {
                 )}
             </AnimatePresence>
             <div
-                className="absolute z-20 color-white bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4"
+                className="absolute z-20 color-white bottom-12 left-1/2 transform -translate-x-1/2 flex gap-4"
             >
                 {buttons.map((button) => (
                     <NavbarButton
@@ -70,6 +71,7 @@ const Navbar: React.FC = () => {
                     />
                 ))}
             </div>
+            <FavelaLogo />
         </>
     );
 };
