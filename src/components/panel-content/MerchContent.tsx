@@ -64,8 +64,8 @@ const MerchContent: React.FC = () => {
         href="https://montanha.bandcamp.com/alvorada" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="mt-6 px-6 py-2 bg-white text-black font-medium rounded hover:bg-gray-200 transition-colors"
-      >
+        className="px-6 py-2 bg-white text-black text-sm font-medium rounded hover:bg-gray-200 transition-colors text-center"
+        >
         PRE-ORDER
       </a>
     </div>
