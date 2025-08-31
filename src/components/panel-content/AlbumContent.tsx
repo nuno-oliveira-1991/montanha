@@ -10,9 +10,9 @@ const AlbumContent: React.FC = () => {
     const isMobile = useMobileDetection();
     
     return (
-        <div className={`w-full h-full overflow-hidden relative ${isMobile ? 'flex flex-col' : 'flex'}`}>
+        <div className={`relative w-full h-full overflow-hidden  justify-center relative touch-none ${isMobile ? 'flex flex-col items-center' : 'flex'}`}>
             {/* Album image */}
-            <div className={`${isMobile ? 'relative w-full mt-2 flex justify-center items-center mb-2' : 'h-full aspect-square flex items-center justify-center'}`}>
+            <div className={`${isMobile ? 'relative w-full flex justify-center items-center mb-2' : 'h-full aspect-square flex items-center justify-center'}`}>
                 <img 
                     src={albumDigital} 
                     alt="Montanha - Alvorada Album" 
@@ -25,13 +25,9 @@ const AlbumContent: React.FC = () => {
             </div>
             
             {/* Content section */}
-            <div className={`flex ${isMobile ? 'w-full px-4 mt-2' : 'w-full flex-col'} ${isMobile ? 'justify-between' : 'justify-between'}`}>
+            <div className={`flex ${isMobile ? 'w-full mt-2' : 'w-full flex-col'} ${isMobile ? 'justify-center gap-4' : 'justify-between'}`}>
                 {!isMobile ? (
                     <>
-                        <div className="flex flex-col items-end text-white">
-                            <p className="text-right font-medium text-lg">COMING SOON</p>
-                            <p className="text-right text-sm mt-1">20 / 10 / 2025</p>
-                        </div>
                         <div className="flex justify-end">
                             <a 
                                 href="https://montanha.bandcamp.com/alvorada" 
@@ -42,14 +38,14 @@ const AlbumContent: React.FC = () => {
                                 PRE-ORDER
                             </a>
                         </div>
+                        <div className="flex flex-col items-end text-white">
+                            <p className="text-right font-medium text-lg">COMING SOON</p>
+                            <p className="text-right text-sm mt-1">20 / 10 / 2025</p>
+                        </div>
                     </>
                 ) : (
                     <>
-                        <div className="flex flex-col items-start text-white">
-                            <p className="text-left font-medium text-xs">COMING SOON</p>
-                            <p className="text-left text-xs mt-0.5">20 / 10 / 2025</p>
-                        </div>
-                        <div className="flex justify-end">
+                                                <div className="flex justify-end">
                             <a 
                                 href="https://montanha.bandcamp.com/alvorada" 
                                 target="_blank" 
@@ -58,6 +54,10 @@ const AlbumContent: React.FC = () => {
                             >
                                 PRE-ORDER
                             </a>
+                        </div>
+                        <div className="flex flex-col items-start text-white">
+                            <p className="text-left font-medium text-xs">COMING SOON</p>
+                            <p className="text-left text-xs mt-0.5">20 / 10 / 2025</p>
                         </div>
                     </>
                 )}
@@ -77,7 +77,7 @@ const AlbumContent: React.FC = () => {
             
             {/* Logos */}
             {isMobile && (
-                <div className="absolute bottom-4 right-4 flex flex-row items-center justify-end gap-4">
+                <div className="absolute bottom-4 right-0 flex flex-row items-center justify-end gap-4">
                     <MobileLogo 
                         linkUrl="https://faveladiscos.bandcamp.com/"
                         imageUrl={favelaLogo}

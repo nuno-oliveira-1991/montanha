@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useMobileDetection from "../hooks/useMobileDetection";
+import useViewportHeight from "../hooks/useViewportHeight";
 import { usePanelContext } from "../contexts/PanelContext";
 
 interface MainPanelProps {
@@ -16,6 +17,7 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
   const [renderMobile, setRenderMobile] = useState<boolean | null>(null);
   const { setPanelOpen } = usePanelContext();
   const isMobile = useMobileDetection();
+  const viewportHeight = useViewportHeight();
   
   useEffect(() => {
     if (isOpen || renderMobile === null) {
@@ -25,11 +27,14 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
   
   useEffect(() => {
     setPanelOpen(isOpen);
-    
     if (isOpen) {
       setRenderMobile(isMobile);
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     } else {
       setRenderMobile(null);
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     }
   }, [isOpen, setPanelOpen, isMobile]);
   
@@ -66,11 +71,11 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
               }}
               className="fixed inset-0 flex items-center justify-center p-2 sm:p-4 z-50 w-full h-full"
             >
-              <div className="w-full h-full flex flex-col bg-transparent overflow-hidden" ref={panelRef}>
+              <div className="w-full flex flex-col bg-transparent overflow-hidden touch-none" ref={panelRef} style={{ height: viewportHeight }}>
                 <div className="flex justify-between items-center p-4">
                   <h2 className="text-lg uppercase text-[#ffffff]" style={{ fontFamily: 'Array' }}>{title}</h2>
                 </div>
-                <div className="flex-1 overflow-y-auto px-4 pb-4 h-full">
+                <div className="flex-1 overflow-hidden px-4 pb-4 h-full">
                   {children || <p className="text-center text-[#ffffff]/70">Content goes here...</p>}
                 </div>
               </div>
@@ -87,7 +92,9 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
               }}
               className="fixed inset-0 flex items-center justify-center p-2 sm:p-4 z-50 w-full h-full"
             >
-              <div className="relative bg-[#050511] rounded-md border-[1px] border-white w-full max-w-4xl h-[70vh] max-h-[80vh] overflow-hidden flex flex-col" ref={panelRef}>
+              <div className="relative bg-[#050511] rounded-md border-[1px] border-white w-full max-w-4xl overflow-hidden flex flex-col" 
+                   ref={panelRef} 
+                   style={{ height: `calc(${viewportHeight} * 0.8)`, maxHeight: `calc(${viewportHeight} * 0.8)` }}>
                 <div className="flex justify-between items-center py-1 pl-4 pr-2 border-b-[1px] border-white">
                   <h2 className="text-md uppercase text-[#ffffff]" style={{ fontFamily: 'Array' }}>{title}</h2>
                   <button

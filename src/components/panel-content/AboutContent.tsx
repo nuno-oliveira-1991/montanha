@@ -37,7 +37,7 @@ const AboutContent: React.FC = () => {
   }, [isMobile]);
   
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center text-white">
+    <div className="w-full h-full flex flex-col items-center justify-center text-white overflow-hidden touch-none">
       <div className="w-full overflow-hidden" style={{ height: imageHeight }}>
         <div className="relative w-full h-full bg-black">
           <img 

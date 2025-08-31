@@ -13,6 +13,10 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
+    /* Dynamic viewport height variables */
+    --vh: 1vh;
+    --app-height: 100%;
   }
 
   body {

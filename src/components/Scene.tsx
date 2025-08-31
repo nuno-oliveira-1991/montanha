@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import useMobileDetection from '../hooks/useMobileDetection';
+import useViewportHeight from '../hooks/useViewportHeight';
 import ShapeParticles from './ShapeParticles';
 import Navbar from './NavBar';
 import { usePanelContext } from '../contexts/PanelContext';
@@ -10,6 +11,7 @@ import { usePanelContext } from '../contexts/PanelContext';
 const Scene: React.FC = () => {
     const isMobile = useMobileDetection();
     const { isPanelOpen } = usePanelContext();
+    const viewportHeight = useViewportHeight();
     return (
         <div>
             <Canvas
@@ -20,7 +22,7 @@ const Scene: React.FC = () => {
                     top: 0,
                     left: 0,
                     width: '100vw',
-                    height: '100vh',
+                    height: viewportHeight,
                     display: 'block'
                 }}
                 dpr={[1, 2]}
@@ -58,11 +60,12 @@ const Scene: React.FC = () => {
 
             {/* Overlay text */}
             <div 
-                className="absolute left-1/2 transform -translate-x-1/2 text-[#ffffff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase z-10 pointer-events-none tracking-wider px-4 text-center" 
+                className="absolute left-1/2 transform -translate-x-1/2 text-[#ffffff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase z-10 pointer-events-none tracking-wider px-4 text-center touch-none" 
                 style={{ 
                     fontFamily: 'Array', 
                     fontSize: isMobile ? 'clamp(2rem, 8vw, 3.5rem)' : undefined,
-                    top: isMobile ? '1.1rem' : '5%'
+                    top: isMobile ? '1.1rem' : '5%',
+                    userSelect: 'none'
                 }}
             >
                 MONTANHA

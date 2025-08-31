@@ -21,7 +21,7 @@ const LiveContent: React.FC = () => {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col items-start justify-start text-white p-2 overflow-y-auto">
+    <div className={`w-full h-full flex flex-col items-start justify-start text-white overflow-y-auto ${isMobile ? 'mt-12' : ''}`}>
       <div className="w-full space-y-6">
         {shows.map((show, index) => (
           <div 
