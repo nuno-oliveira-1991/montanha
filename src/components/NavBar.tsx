@@ -4,10 +4,9 @@ import MainPanel from "./main-panel";
 import NavbarButton from "./navbar-button";
 import AboutContent from "./panel-content/about-content";
 import ContactContent from "./panel-content/contact-content";
-import LiveContent from "./panel-content/live-content copy";
+import LiveContent from "./panel-content/live-content";
 import AlbumContent from "./panel-content/album-content";
 import VideosContent from "./panel-content/videos-content";
-import FavelaLogo from "./FavelaLogo";
 
 const Navbar: React.FC = () => {
     const [activePanel, setActivePanel] = useState<string | null>("Videos");
@@ -71,7 +70,6 @@ const Navbar: React.FC = () => {
                     />
                 ))}
             </div>
-            <FavelaLogo />
         </>
     );
 };

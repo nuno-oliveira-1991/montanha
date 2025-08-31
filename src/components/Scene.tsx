@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import ShapeParticles from './shape-particles';
 import Navbar from './navbar';
-import FavelaLogo from './FavelaLogo';
+import Logo from './logo';
 
 const Scene: React.FC = () => {
     return (
@@ -50,24 +50,9 @@ const Scene: React.FC = () => {
             </Canvas>
 
             {/* Overlay text */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%) scaleY(0.6)',
-                    color: 'white',
-                    fontSize: '5rem',
-                    fontFamily: 'monospace',
-                    letterSpacing: '0.3em',
-                    lineHeight: '0.5',
-                    textTransform: 'uppercase',
-                    zIndex: 10,
-                    pointerEvents: 'none'
-                }}
-            >
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-8xl uppercase z-10 pointer-events-none tracking-wider" style={{ fontFamily: 'Array' }}>
                 MONTANHA
-              </div>
+            </div>
 
             {/* Navbar */}
             <Navbar />

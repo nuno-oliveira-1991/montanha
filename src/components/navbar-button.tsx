@@ -15,6 +15,9 @@ const NavBarButton: React.FC<NavBarButtonProps> = ({ label, onClick, isActive = 
           ? 'border-white bg-white/10' 
           : 'border-transparent hover:border-white'
       }`}
+      style={{  
+        fontFamily: 'Array'
+      }}
     >
       {label}
     </button>
