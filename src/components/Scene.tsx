@@ -1,9 +1,8 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import ShapeParticles from './shape-particles';
-import Navbar from './navbar';
-import Logo from './logo';
+import ShapeParticles from './ShapeParticles';
+import Navbar from './Navbar';
 
 const Scene: React.FC = () => {
     return (

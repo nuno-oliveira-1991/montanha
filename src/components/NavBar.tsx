@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import MainPanel from "./main-panel";
-import NavbarButton from "./navbar-button";
-import AboutContent from "./panel-content/about-content";
-import ContactContent from "./panel-content/contact-content";
-import LiveContent from "./panel-content/live-content";
-import AlbumContent from "./panel-content/album-content";
-import VideosContent from "./panel-content/videos-content";
+import MainPanel from "./MainPanel";
+import NavbarButton from "./NavbarButton";
+import AboutContent from "./panel-content/AboutContent";
+import ContactContent from "./panel-content/ContactContent";
+import LiveContent from "./panel-content/LiveContent";
+import AlbumContent from "./panel-content/AlbumContent";
+import VideosContent from "./panel-content/VideosContent";
 
 const Navbar: React.FC = () => {
     const [activePanel, setActivePanel] = useState<string | null>("Videos");

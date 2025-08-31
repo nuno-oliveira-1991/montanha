@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../logo';
+import Logo from '../Logo';
 import CamaraLogo from '../../assets/porto-logo.png';
 import favelaLogo from "../../assets/favela-logo.png"
 
