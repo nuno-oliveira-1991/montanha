@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
                 )}
             </AnimatePresence>
             <div
-                className="absolute z-20 color-white bottom-12 left-1/2 transform -translate-x-1/2 flex gap-4"
+                className="absolute z-20 text-white bottom-12 left-1/2 transform -translate-x-1/2 flex gap-4"
             >
                 {buttons.map((button) => (
                     <NavbarButton

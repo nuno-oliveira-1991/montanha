@@ -17,14 +17,14 @@ const NavBarButton: React.FC<NavBarButtonProps> = ({ label, onClick, isActive = 
         fontFamily: 'Array'
       }}
     >
-      <span className="relative">
+      <span className="relative text-white">
         {label}
         {/* Active underline */}
         {isActive && (
-          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white"></div>
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white opacity-75"></div>
         )}
-        {/* Hover underline - grows from left to right */}
-        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></div>
+        {/* Hover underline */}
+        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white opacity-75 transition-all duration-300 group-hover:w-full"></div>
       </span>
     </button>
   );
