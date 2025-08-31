@@ -6,6 +6,12 @@ import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
   css: {
     postcss: {
       plugins: [
@@ -50,10 +56,5 @@ export default defineConfig({
         },
       },
     },
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    force: true
   }
 });
