@@ -94,7 +94,7 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
             >
               <div className="relative bg-[#050511] rounded-md border-[1px] border-white w-full max-w-4xl overflow-hidden flex flex-col" 
                    ref={panelRef} 
-                   style={{ height: `calc(${viewportHeight} * 0.8)`, maxHeight: `calc(${viewportHeight} * 0.8)` }}>
+                   style={{ height: `calc(${viewportHeight} * 0.7)`, maxHeight: `calc(${viewportHeight} * 0.7)` }}>
                 <div className="flex justify-between items-center py-1 pl-4 pr-2 border-b-[1px] border-white">
                   <h2 className="text-md uppercase text-[#ffffff]" style={{ fontFamily: 'Array' }}>{title}</h2>
                   <button
@@ -105,7 +105,7 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
                   </button>
                 </div>
                 <div className="p-4 overflow-y-auto flex-1 h-full">
-                  {children || <p className="text-center text-[#ffffff]/70">Content goes here...</p>}
+                  {children || <p className="text-center text-[#ffffff]/70">No Content</p>}
                 </div>
               </div>
             </motion.div>
