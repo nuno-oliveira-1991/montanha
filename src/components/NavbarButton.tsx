@@ -10,7 +10,7 @@ const NavBarButton: React.FC<NavBarButtonProps> = ({ label, onClick, isActive = 
   return (
     <button
       onClick={(e: React.MouseEvent) => onClick(e)}
-      className={`nav-button w-16 sm:w-20 md:w-24 h-8 sm:h-10 text-xs sm:text-sm uppercase transition-all duration-300 relative group flex items-center justify-center ${
+      className={`nav-button h-8 sm:h-10 text-xs sm:text-sm uppercase transition-all duration-300 relative group flex items-center justify-center ${
         isActive ? 'text-[#ffffff]' : 'text-[#ffffff] hover:text-[#ffffff]'
       }`}
       style={{  

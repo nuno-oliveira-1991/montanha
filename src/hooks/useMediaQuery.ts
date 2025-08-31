@@ -20,7 +20,6 @@ const useMediaQuery = (query: string): boolean => {
     setMatches(media.matches);
     const listener = (e: MediaQueryListEvent) => {
       setMatches(e.matches);
-      console.log(`Media query '${query}' changed to:`, e.matches);
     };
     media.addEventListener('change', listener);
     return () => media.removeEventListener('change', listener);

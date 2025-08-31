@@ -9,6 +9,7 @@ import ContactContent from "./panel-content/ContactContent";
 import LiveContent from "./panel-content/LiveContent";
 import AlbumContent from "./panel-content/AlbumContent";
 import VideosContent from "./panel-content/VideosContent";
+import MerchContent from "./panel-content/MerchContent";
 
 const Navbar: React.FC = () => {
     const [activePanel, setActivePanel] = useState<string | null>("Videos");
@@ -30,10 +31,6 @@ const Navbar: React.FC = () => {
     }, [activePanel]);
 
     const handleButtonClick = (button: string) => {
-        if (button === 'Merch') {
-            window.open('https://montanha.bandcamp.com/alvorada', '_blank');
-            return;
-        }
         setActivePanel(button);
     };
 
@@ -58,6 +55,7 @@ const Navbar: React.FC = () => {
                         {activePanel === 'Alvorada' && <AlbumContent />}
                         {activePanel === 'Videos' && <VideosContent />}
                         {activePanel === 'Live' && <LiveContent />}
+                        {activePanel === 'Merch' && <MerchContent />}
                     </MainPanel>
                 )}
             </AnimatePresence>
@@ -65,7 +63,7 @@ const Navbar: React.FC = () => {
             {/* Desktop Navigation */}
             {!isMobile && (
                 <div
-                    className="absolute z-20 text-[#ffffff] bottom-4 sm:bottom-12 left-1/2 transform -translate-x-1/2 gap-2 sm:gap-4 px-4 flex"
+                    className="absolute z-20 text-[#ffffff] bottom-4 sm:bottom-12 left-1/2 transform -translate-x-1/2 gap-10 sm:gap-12 px-4 flex"
                 >
                 {buttons.map((button) => (
                     <NavbarButton
