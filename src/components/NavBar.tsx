@@ -80,13 +80,13 @@ const Navbar: React.FC = () => {
             )}
             
             {/* Mobile Hamburger Menu */}
-            <HamburgerMenu
+            {isMobile && <HamburgerMenu
                 buttons={buttons}
                 activePanel={activePanel}
                 onButtonClick={handleButtonClick}
                 showAsCloseButton={!!activePanel}
                 onClosePanel={handleBackToMenu}
-            />
+            />}
         </>
     );
 };

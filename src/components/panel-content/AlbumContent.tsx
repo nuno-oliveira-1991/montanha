@@ -3,7 +3,6 @@ import Logo from '../Logo';
 import CamaraLogo from '../../assets/porto-logo.png';
 import favelaLogo from "../../assets/favela-logo.png"
 import albumDigital from "../../assets/album-digital.webp"
-import albumCover2 from '../../assets/album-cover-back.png';
 import useMobileDetection from '../../hooks/useMobileDetection';
 import MobileLogo from '../MobileLogo';
 
