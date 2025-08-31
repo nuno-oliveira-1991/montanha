@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+import useMobileDetection from "../hooks/useMobileDetection";
 import { AnimatePresence } from "framer-motion";
 import MainPanel from "./MainPanel";
 import NavbarButton from "./NavbarButton";
+import HamburgerMenu from "./HamburgerMenu";
 import AboutContent from "./panel-content/AboutContent";
 import ContactContent from "./panel-content/ContactContent";
 import LiveContent from "./panel-content/LiveContent";
@@ -10,12 +12,11 @@ import VideosContent from "./panel-content/VideosContent";
 
 const Navbar: React.FC = () => {
     const [activePanel, setActivePanel] = useState<string | null>("Videos");
-
+    const isMobile = useMobileDetection();
     const panelRef = useRef<HTMLDivElement | null>(null);
 
-    const buttons = ['About', 'Contact', 'Alvorada', 'Videos', 'Live', 'Merch'];
-
-    // Close panel when clicking outside
+    const buttons = ['Merch', 'Alvorada', 'Live', 'Videos', 'About', 'Contact'];
+    
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as HTMLElement;
@@ -30,10 +31,14 @@ const Navbar: React.FC = () => {
 
     const handleButtonClick = (button: string) => {
         if (button === 'Merch') {
-            window.open('https://faveladiscos.bandcamp.com/merch', '_blank');
+            window.open('https://montanha.bandcamp.com/alvorada', '_blank');
             return;
         }
         setActivePanel(button);
+    };
+
+    const handleBackToMenu = () => {
+        setActivePanel(null);
     };
 
     return (
@@ -46,6 +51,7 @@ const Navbar: React.FC = () => {
                         onClose={() => setActivePanel(null)}
                         title={activePanel}
                         panelRef={panelRef}
+                        onBackToMenu={handleBackToMenu}
                     >
                         {activePanel === 'About' && <AboutContent />}
                         {activePanel === 'Contact' && <ContactContent />}
@@ -55,9 +61,12 @@ const Navbar: React.FC = () => {
                     </MainPanel>
                 )}
             </AnimatePresence>
-            <div
-                className="absolute z-20 text-white bottom-12 left-1/2 transform -translate-x-1/2 flex gap-4"
-            >
+            
+            {/* Desktop Navigation */}
+            {!isMobile && (
+                <div
+                    className="absolute z-20 text-[#ffffff] bottom-4 sm:bottom-12 left-1/2 transform -translate-x-1/2 gap-2 sm:gap-4 px-4 flex"
+                >
                 {buttons.map((button) => (
                     <NavbarButton
                         key={button}
@@ -70,6 +79,16 @@ const Navbar: React.FC = () => {
                     />
                 ))}
             </div>
+            )}
+            
+            {/* Mobile Hamburger Menu */}
+            <HamburgerMenu
+                buttons={buttons}
+                activePanel={activePanel}
+                onButtonClick={handleButtonClick}
+                showAsCloseButton={!!activePanel}
+                onClosePanel={handleBackToMenu}
+            />
         </>
     );
 };

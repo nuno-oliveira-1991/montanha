@@ -10,21 +10,21 @@ const NavBarButton: React.FC<NavBarButtonProps> = ({ label, onClick, isActive = 
   return (
     <button
       onClick={(e: React.MouseEvent) => onClick(e)}
-      className={`nav-button w-24 h-10 uppercase text-white transition-all duration-300 relative group flex items-center justify-center ${
-        isActive ? 'text-white' : 'text-white hover:text-white'
+      className={`nav-button w-16 sm:w-20 md:w-24 h-8 sm:h-10 text-xs sm:text-sm uppercase transition-all duration-300 relative group flex items-center justify-center ${
+        isActive ? 'text-[#ffffff]' : 'text-[#ffffff] hover:text-[#ffffff]'
       }`}
       style={{  
         fontFamily: 'Array'
       }}
     >
-      <span className="relative text-white">
+      <span className="relative text-[#ffffff] font-medium">
         {label}
         {/* Active underline */}
         {isActive && (
-          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white opacity-75"></div>
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#ffffff]"></div>
         )}
         {/* Hover underline */}
-        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white opacity-75 transition-all duration-300 group-hover:w-full"></div>
+        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#ffffff] transition-all duration-300 group-hover:w-full"></div>
       </span>
     </button>
   );

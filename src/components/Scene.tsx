@@ -1,10 +1,15 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
+import { motion } from 'framer-motion';
+import useMobileDetection from '../hooks/useMobileDetection';
 import ShapeParticles from './ShapeParticles';
 import Navbar from './NavBar';
+import { usePanelContext } from '../contexts/PanelContext';
 
 const Scene: React.FC = () => {
+    const isMobile = useMobileDetection();
+    const { isPanelOpen } = usePanelContext();
     return (
         <div>
             <Canvas
@@ -31,25 +36,35 @@ const Scene: React.FC = () => {
                 <OrbitControls 
                     enablePan={true}            
                     enableZoom={false}          
-                    target={[0, 0, 0]}          
+                    target={[0, 0, 0]}
+                    enableDamping={true}
+                    dampingFactor={isMobile ? 0.1 : 0.05}
+                    rotateSpeed={isMobile ? 0.3 : 0.5}
                 />
 
                 {/* 3D Shapes */}
                 <Suspense fallback={null}>
                     <ShapeParticles 
-                        count={500} 
-                        radius={20} 
+                        count={isMobile ? 300 : 500} 
+                        radius={isMobile ? 15 : 20} 
                         position={[0, 0, 0]} 
                         rotate 
-                        speed={0.005}     
-                        minSpeed={0.002}  
-                        maxSpeed={0.006}
+                        speed={isMobile ? 0.003 : 0.005}     
+                        minSpeed={isMobile ? 0.001 : 0.002}  
+                        maxSpeed={isMobile ? 0.004 : 0.006}
                     />
                 </Suspense>
             </Canvas>
 
             {/* Overlay text */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-8xl uppercase z-10 pointer-events-none tracking-wider" style={{ fontFamily: 'Array' }}>
+            <div 
+                className="absolute left-1/2 transform -translate-x-1/2 text-[#ffffff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase z-10 pointer-events-none tracking-wider px-4 text-center" 
+                style={{ 
+                    fontFamily: 'Array', 
+                    fontSize: isMobile ? 'clamp(2rem, 8vw, 3.5rem)' : undefined,
+                    top: isMobile ? '1.1rem' : '5%'
+                }}
+            >
                 MONTANHA
             </div>
 
