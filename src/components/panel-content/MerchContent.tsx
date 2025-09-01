@@ -61,7 +61,7 @@ const MerchContent: React.FC = () => {
 
       {/* Pre-order button */}
       <a 
-        href="https://montanha.bandcamp.com/alvorada" 
+        href="https://montanha.bandcamp.com/album/alvorada" 
         target="_blank" 
         rel="noopener noreferrer"
         className="px-6 py-2 bg-white text-black text-sm font-medium rounded hover:bg-gray-200 transition-colors text-center"
