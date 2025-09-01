@@ -30,7 +30,7 @@ const AlbumContent: React.FC = () => {
                     <>
                         <div className="flex justify-end">
                             <a 
-                                href="https://montanha.bandcamp.com/alvorada" 
+                                href="https://montanha.bandcamp.com/album/alvorada" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="px-6 py-2 bg-white text-black text-sm font-medium rounded hover:bg-gray-200 transition-colors text-center"
@@ -45,7 +45,7 @@ const AlbumContent: React.FC = () => {
                     </>
                 ) : (
                     <>
-                                                <div className="flex justify-end">
+                        <div className="flex justify-end">
                             <a 
                                 href="https://montanha.bandcamp.com/album/alvorada" 
                                 target="_blank" 
