@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import useMobileDetection from "../hooks/useMobileDetection";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import MainPanel from "./MainPanel";
 import NavbarButton from "./NavbarButton";
 import HamburgerMenu from "./HamburgerMenu";
@@ -62,31 +62,44 @@ const Navbar: React.FC = () => {
             
             {/* Desktop Navigation */}
             {!isMobile && (
-                <div
-                    className="absolute z-20 text-[#ffffff] bottom-4 sm:bottom-12 left-1/2 transform -translate-x-1/2 gap-10 sm:gap-12 px-4 flex"
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                    className="fixed z-20 text-[#ffffff] bottom-4 sm:bottom-12 left-0 right-0 flex justify-center items-center w-full"
                 >
-                {buttons.map((button) => (
-                    <NavbarButton
-                        key={button}
-                        label={button}
-                        isActive={activePanel === button}
-                        onClick={(e: React.MouseEvent) => {
-                            e.stopPropagation();
-                            handleButtonClick(button);
-                        }}
-                    />
-                ))}
-            </div>
+                <div className="flex gap-6 sm:gap-8 md:gap-10 justify-center">
+                    {buttons.map((button) => (
+                        <NavbarButton
+                            key={button}
+                            label={button}
+                            isActive={activePanel === button}
+                            onClick={(e: React.MouseEvent) => {
+                                e.stopPropagation();
+                                handleButtonClick(button);
+                            }}
+                        />
+                    ))}
+                </div>
+            </motion.div>
             )}
             
             {/* Mobile Hamburger Menu */}
-            {isMobile && <HamburgerMenu
-                buttons={buttons}
-                activePanel={activePanel}
-                onButtonClick={handleButtonClick}
-                showAsCloseButton={!!activePanel}
-                onClosePanel={handleBackToMenu}
-            />}
+            {isMobile && (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                >
+                    <HamburgerMenu
+                        buttons={buttons}
+                        activePanel={activePanel}
+                        onButtonClick={handleButtonClick}
+                        showAsCloseButton={!!activePanel}
+                        onClosePanel={handleBackToMenu}
+                    />
+                </motion.div>
+            )}
         </>
     );
 };

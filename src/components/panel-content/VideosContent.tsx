@@ -10,7 +10,7 @@ const VideosContent: React.FC = () => {
   };
 
   return (
-    <div className={`w-full h-full relative ${isMobile ? 'pt-12' : ''}`}>
+    <div className={`w-full h-full relative ${isMobile ? 'pt-8' : ''}`}>
       {/* Loading spinner */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#02010F] z-10">

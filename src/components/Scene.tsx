@@ -59,8 +59,11 @@ const Scene: React.FC = () => {
             </Canvas>
 
             {/* Overlay text */}
-            <div 
-                className="absolute left-1/2 transform -translate-x-1/2 text-[#ffffff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase z-10 pointer-events-none tracking-wider px-4 text-center touch-none" 
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3, ease: "easeInOut" }}
+                className="absolute left-1/2 transform -translate-x-1/2 text-[#ffffff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase z-50 pointer-events-none tracking-wider px-4 text-center touch-none" 
                 style={{ 
                     fontFamily: 'Array', 
                     fontSize: isMobile ? 'clamp(2rem, 8vw, 3.5rem)' : undefined,
@@ -69,7 +72,7 @@ const Scene: React.FC = () => {
                 }}
             >
                 MONTANHA
-            </div>
+            </motion.div>
 
             {/* Navbar */}
             <Navbar />

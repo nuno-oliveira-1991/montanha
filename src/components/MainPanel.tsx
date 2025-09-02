@@ -62,20 +62,19 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
           {renderMobile ? (
             <motion.div
               key={`${title}-mobile`}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{
-                duration: 0.3,
+                duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
+                delay: 0.1
               }}
               className="fixed inset-0 flex items-center justify-center p-2 sm:p-4 z-50 w-full h-full"
             >
               <div className="w-full flex flex-col bg-transparent overflow-hidden touch-none" ref={panelRef} style={{ height: viewportHeight }}>
-                <div className="flex justify-between items-center p-4">
-                  <h2 className="text-lg uppercase text-[#ffffff]" style={{ fontFamily: 'Array' }}>{title}</h2>
-                </div>
-                <div className="flex-1 overflow-hidden px-4 pb-4 h-full">
+                <h2 className="text-xs uppercase text-[#ffffff] absolute left-6 top-6 tracking-wider font-bold">{title}</h2>
+                <div className="flex-1 overflow-hidden px-4 pb-4 h-full mt-12">
                   {children || <p className="text-center text-[#ffffff]/70">Content goes here...</p>}
                 </div>
               </div>
@@ -83,12 +82,13 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
           ) : renderMobile === false && (
             <motion.div
               key={`${title}-desktop`}
-              initial={{ opacity: 0, scale: 0.9, x: 20 }}
+              initial={{ opacity: 0, scale: 0.95, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.9, x: 20 }}
+              exit={{ opacity: 0, scale: 0.95, x: 20 }}
               transition={{
-                duration: 0.3,
+                duration: 0.4,
                 ease: [0.16, 1, 0.3, 1],
+                delay: 0.1
               }}
               className="fixed inset-0 flex items-center justify-center p-2 sm:p-4 z-50 w-full h-full"
             >
@@ -96,7 +96,7 @@ const MainPanel: React.FC<MainPanelProps> = ({ children, isOpen, onClose, title,
                    ref={panelRef} 
                    style={{ height: `calc(${viewportHeight} * 0.7)`, maxHeight: `calc(${viewportHeight} * 0.7)` }}>
                 <div className="flex justify-between items-center py-1 pl-4 pr-2 border-b-[1px] border-white">
-                  <h2 className="text-md uppercase text-[#ffffff]" style={{ fontFamily: 'Array' }}>{title}</h2>
+                  <h2 className="text-xs uppercase text-[#ffffff]">{title}</h2>
                   <button
                     onClick={onClose}
                     className="p-[4px] w-6 h-6 flex rounded-md items-center justify-center text-[#ffffff] hover:bg-white hover:text-black transition-colors duration-300"
